@@ -1520,7 +1520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497456343}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.077, y: 1.92, z: 0.07311907}
+  m_LocalPosition: {x: 0.077, y: -1.66, z: 0.07311907}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1637,7 +1637,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerOfGravity: {fileID: 782451530}
   rotationSpeed: 200
-  livesText: {fileID: 148352136}
 --- !u!114 &1497456349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1651,6 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2100670445}
+  livesText: {fileID: 148352136}
 --- !u!1 &1702518959
 GameObject:
   m_ObjectHideFlags: 0

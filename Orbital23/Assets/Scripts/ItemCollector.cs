@@ -7,9 +7,15 @@ using UnityEngine.SceneManagement;
 public class ItemCollector : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
-   // [SerializeField] private Text livesText;
+    [SerializeField] private Text livesText;
     private int score = 0;
-   // private int lives = 1;
+    private int lives = 1;
+    private Vector3 initialPosition;
+
+   private void Start()
+   {
+    initialPosition = transform.position;
+   }
 
     private void OnTriggerEnter2D(Collider2D collison)
     {
@@ -20,8 +26,15 @@ public class ItemCollector : MonoBehaviour
         score++;
         scoreText.text = "Score: " + score;
        }
-       
-      /* if (collison.gameObject.CompareTag("Ground"))
+
+       if (collison.gameObject.CompareTag("Heart"))
+       {
+        Destroy(collison.gameObject);
+        lives++;
+        livesText.text = "Lives: " + lives;
+       }
+
+       if (collison.gameObject.CompareTag("Ground"))
        {
         lives--;
         livesText.text = "Lives: " + lives;
@@ -29,18 +42,11 @@ public class ItemCollector : MonoBehaviour
         {
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-        else
+        else 
         {
-            ResetObject(Shuttlecock);
+            transform.position = initialPosition;
         }
        } 
-
-       if (collison.gameObject.CompareTag("Heart"))
-       {
-        Destroy(collison.gameObject);
-        lives++;
-        livesText.text = "Lives: " + lives;
-       }*/
 
        if (collison.gameObject.CompareTag("Smash"))
        {
