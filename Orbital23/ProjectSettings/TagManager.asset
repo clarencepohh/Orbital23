@@ -8,6 +8,8 @@ TagManager:
   - Heart
   - Obstacle
   - Smash
+  - Ground
+  - Shuttlecock
   layers:
   - Default
   - TransparentFX

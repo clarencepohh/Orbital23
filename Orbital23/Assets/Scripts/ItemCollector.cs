@@ -7,27 +7,44 @@ using UnityEngine.SceneManagement;
 public class ItemCollector : MonoBehaviour
 {
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text livesText;
     private int score = 0;
+    private int lives = 1;
 
+ 
     private void OnTriggerEnter2D(Collider2D collison)
     {
+        
        if (collison.gameObject.CompareTag("Coin"))
        {
         Destroy(collison.gameObject);
         score++;
         scoreText.text = "Score: " + score;
        }
+       
+       if (collison.gameObject.CompareTag("Ground"))
+       {
+        lives--;
+        livesText.text = "Lives: " + lives;
+        if (lives == 0)
+        {
+         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+       } 
 
        if (collison.gameObject.CompareTag("Heart"))
        {
         Destroy(collison.gameObject);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // trigger when game over to restart
+        lives++;
+        livesText.text = "Lives: " + lives;
        }
 
        if (collison.gameObject.CompareTag("Smash"))
        {
         Destroy(collison.gameObject);
-        // Destroy()
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Obstacle");
+        foreach(GameObject Obstacle in enemies)
+        GameObject.Destroy(Obstacle);
        }
     
     }
