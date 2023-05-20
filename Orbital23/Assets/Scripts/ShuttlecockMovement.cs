@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ShuttlecockMovement : MonoBehaviour
 {
     private Rigidbody2D rb; 
     public Transform centerOfGravity;
     public float rotationSpeed = 1.0f;
-
+  
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -13,6 +15,7 @@ public class ShuttlecockMovement : MonoBehaviour
         { 
             rb.centerOfMass = centerOfGravity.localPosition;
         }
+        
     }
 
     private void Update() {
