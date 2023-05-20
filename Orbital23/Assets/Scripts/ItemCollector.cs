@@ -11,10 +11,12 @@ public class ItemCollector : MonoBehaviour
     private int score = 0;
     private int lives = 1;
     private Vector3 initialPosition;
+    private Rigidbody2D rb;
 
    private void Start()
    {
     initialPosition = transform.position;
+    rb = GetComponent<Rigidbody2D>();
    }
 
     private void OnTriggerEnter2D(Collider2D collison)
@@ -45,6 +47,7 @@ public class ItemCollector : MonoBehaviour
         else 
         {
             transform.position = initialPosition;
+            rb.velocity = new Vector3 (0, 0, 0);
         }
        } 
 
