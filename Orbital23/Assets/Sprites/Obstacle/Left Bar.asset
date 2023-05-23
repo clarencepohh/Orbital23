@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Left Bar
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 582470994, guid: 417cc3f5ec938e445a49a95668b13374, type: 3}
+  - {fileID: -1682725674, guid: 417cc3f5ec938e445a49a95668b13374, type: 3}
+  - {fileID: -1880248198, guid: 417cc3f5ec938e445a49a95668b13374, type: 3}
+  - {fileID: 1826263995, guid: 417cc3f5ec938e445a49a95668b13374, type: 3}
+  - {fileID: -715882105, guid: 417cc3f5ec938e445a49a95668b13374, type: 3}
+  - {fileID: -1530599470, guid: 417cc3f5ec938e445a49a95668b13374, type: 3}
+  m_MinSpeed: 1
+  m_MaxSpeed: 1
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
