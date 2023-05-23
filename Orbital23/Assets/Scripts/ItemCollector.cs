@@ -12,6 +12,7 @@ public class ItemCollector : MonoBehaviour
     private int lives = 1;
     private Vector3 initialPosition;
     private Rigidbody2D rb;
+   // public SpriteRenderer sprite;
 
    private void Start()
    {
@@ -25,6 +26,7 @@ public class ItemCollector : MonoBehaviour
        if (collison.gameObject.CompareTag("Coin"))
        {
         Destroy(collison.gameObject);
+        //sprite.enabled = false;
         score++;
         scoreText.text = "Score: " + score;
        }
