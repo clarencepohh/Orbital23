@@ -6,9 +6,9 @@ public class SpawnerItems : MonoBehaviour
 {
     public GameObject prefab;
     public float spawnRate = 1f;
-    public float minHeight = 50f;
-    public float maxHeight = 100f;
-    public float leftBound = 1f;
+    public float minHeight = 1f;
+    public float maxHeight = 5f;
+    public float leftBound = -5f;
     public float rightBound = 5f;
     public float count = 0;
     public float limit = 5;
