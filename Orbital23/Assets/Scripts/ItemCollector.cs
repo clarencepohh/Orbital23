@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    [SerializeField] private Text scoreText;
-    [SerializeField] private Text livesText;
     private int score = 0;
     private int lives = 1;
     private Vector3 initialPosition;
     private Rigidbody2D rb;
+    public TextMeshProUGUI scoreUI;
+    public TextMeshProUGUI livesUI;
 
    private void Start()
    {
@@ -26,20 +27,20 @@ public class ItemCollector : MonoBehaviour
        {
         Destroy(collison.gameObject);
         score++;
-        scoreText.text = "Score: " + score;
+        scoreUI.text = "Score: " + score;
        }
 
        if (collison.gameObject.CompareTag("Heart"))
        {
         Destroy(collison.gameObject);
         lives++;
-        livesText.text = "Lives: " + lives;
+        livesUI.text = "Lives: " + lives;
        }
 
        if (collison.gameObject.CompareTag("Ground"))
        {
         lives--;
-        livesText.text = "Lives: " + lives;
+        livesUI.text = "Lives: " + lives;
         if (lives == 0)
         {
          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
