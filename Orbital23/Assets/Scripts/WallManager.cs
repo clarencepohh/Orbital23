@@ -5,7 +5,6 @@ using UnityEngine;
 public class WallManager : MonoBehaviour
 {
     public GameObject wallprefab;
-
     private Transform playerTransform;
     private float spawnZ = 0.0f;
     private float wallLength = 10.0f;
