@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script not in use at the moment
+
 public class Spawnitems : MonoBehaviour
 {
     public GameObject prefab;
