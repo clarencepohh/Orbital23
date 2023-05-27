@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for items to spawn infinitely based on position of shuttlecock, added to Collectibles
+
 public class SpawnTest : MonoBehaviour
 {
     public GameObject prefabCoin, prefabHeart, prefabSmash, prefabObs;
     private Transform playerTransform;
-    private float spawnZ = 0.0f;
-    private float length = 5f;
-    private int amtobj = 10;
-    public float minHeight = -5f;
+    private float spawnY = 0.0f; // position on Y axis to spawn items
+    private float length = 5f;   // distance between 2 items
+    private int amtobj = 10;     // number of each item on screen 
+    public float minHeight = -5f;  // range of where items can spawn, for randomness
     public float maxHeight = 5f;
     public float leftBound = -5f;
     public float rightBound = 5f;
@@ -29,7 +31,7 @@ public class SpawnTest : MonoBehaviour
 
     void Update()
     {
-        if (playerTransform.position.y > (spawnZ - amtobj * length))
+        if (playerTransform.position.y > (spawnY - amtobj * length))
         {
             SpawnCoin();
             SpawnHeart();
@@ -43,10 +45,10 @@ public class SpawnTest : MonoBehaviour
         GameObject go;
         go = Instantiate(prefabCoin) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = Vector3.up * spawnZ;
+        go.transform.position = Vector3.up * spawnY;
         go.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         go.transform.position += Vector3.left * Random.Range(leftBound, rightBound);
-        spawnZ += length;
+        spawnY += length;
 
     }
 
@@ -55,10 +57,10 @@ public class SpawnTest : MonoBehaviour
         GameObject go;
         go = Instantiate(prefabHeart) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = Vector3.up * spawnZ;
+        go.transform.position = Vector3.up * spawnY;
         go.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         go.transform.position += Vector3.left * Random.Range(leftBound, rightBound);
-        spawnZ += length;
+        spawnY += length;
 
     }
 
@@ -67,10 +69,10 @@ public class SpawnTest : MonoBehaviour
         GameObject go;
         go = Instantiate(prefabSmash) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = Vector3.up * spawnZ;
+        go.transform.position = Vector3.up * spawnY;
         go.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         go.transform.position += Vector3.left * Random.Range(leftBound, rightBound);
-        spawnZ += length;
+        spawnY += length;
 
     }
 
@@ -79,10 +81,10 @@ public class SpawnTest : MonoBehaviour
         GameObject go;
         go = Instantiate(prefabObs) as GameObject;
         go.transform.SetParent(transform);
-        go.transform.position = Vector3.up * spawnZ;
+        go.transform.position = Vector3.up * spawnY;
         go.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
         go.transform.position += Vector3.left * Random.Range(leftBound, rightBound);
-        spawnZ += length;
+        spawnY += length;
 
     }
 }
