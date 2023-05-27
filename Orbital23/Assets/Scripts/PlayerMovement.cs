@@ -1,14 +1,14 @@
 using UnityEngine;
-// using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
     Vector3 mousePosition;
-    public float moveSpeed = 0.8f;
+    public float rotSpeed = 0.8f; // Speed of shuttlecock rotation
     Rigidbody2D rb;
     Vector2 position = new Vector2(0f, 0f);
 
     private void Start() {
+        // Get Rigidbody2D component
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         mousePosition = Input.mousePosition; // Get current mouse position at this frame
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Get Scene coordinates
-        position = Vector2.Lerp(transform.position, mousePosition, moveSpeed); // Linearly interpolates from current position to mouse position 
+        position = Vector2.Lerp(transform.position, mousePosition, rotSpeed); // Linearly interpolates from current position to mouse position to simulate shuttlecock movement
     }
 
     private void FixedUpdate() {
