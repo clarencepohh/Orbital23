@@ -1,3 +1,4 @@
+// Children of Colin here: 
 // Copyrights and efforts belong to the owner and creator of the script below. 
 
 /* The MIT License (MIT)
