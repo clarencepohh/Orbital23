@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// script is not in use; kept for reference only
+
 public class EnvironmentFollow : MonoBehaviour
 {
     public Transform shuttlecockTransform;

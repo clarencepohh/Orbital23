@@ -352,7 +352,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -568,7 +568,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1914624, y: -2.3300009, z: -9.926881}
+=======
+  m_LocalPosition: {x: -0.12866867, y: -2.3300009, z: -9.926881}
+ main
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1970,7 +1972,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2139,7 +2141,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2293,7 +2295,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa41f98778592c4eba77345eb91c1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.8
+  rotSpeed: 0.8
+--- !u!1001 &94951051241462607
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030032, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030034, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_Name
+      value: Test Obstacle 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 94951051096030062, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d41ac2f7d04ba284c8fc88a391f93b2c, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa58afb1a3b19e74cba3ad35a2429bef, type: 3}
 --- !u!1001 &4320354597108163168
 PrefabInstance:
   m_ObjectHideFlags: 0
