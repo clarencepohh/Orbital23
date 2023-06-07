@@ -4,9 +4,9 @@ using UnityEngine;
 
 // Script for items to spawn infinitely based on position of shuttlecock, added to Collectibles
 
-public class SpawnTest : MonoBehaviour
+public class SpawnItem : MonoBehaviour
 {
-    public GameObject prefabCoin, prefabHeart, prefabSmash, prefabObs;
+    public GameObject prefabCoin, prefabHeart, prefabSmash, prefabMagnet;
     private Transform playerTransform;
     private float spawnY = 0.0f; // position on Y axis to spawn items
     private float length = 5f;   // distance between 2 items
@@ -25,7 +25,7 @@ public class SpawnTest : MonoBehaviour
             SpawnCoin();
             SpawnHeart();
             SpawnSmash();
-            SpawnObs();
+            SpawnMagnet();
         }
     }
 
@@ -36,7 +36,7 @@ public class SpawnTest : MonoBehaviour
             SpawnCoin();
             SpawnHeart();
             SpawnSmash();
-            SpawnObs();
+            SpawnMagnet();
         }
     }    
 
@@ -76,10 +76,10 @@ public class SpawnTest : MonoBehaviour
 
     }
 
-    private void SpawnObs(int prefabIndex = -1)
+    private void SpawnMagnet(int prefabIndex = -1)
     {
         GameObject go;
-        go = Instantiate(prefabObs) as GameObject;
+        go = Instantiate(prefabMagnet) as GameObject;
         go.transform.SetParent(transform);
         go.transform.position = Vector3.up * spawnY;
         go.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
