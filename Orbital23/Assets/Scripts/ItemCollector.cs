@@ -15,13 +15,15 @@ public class ItemCollector : MonoBehaviour
     private Rigidbody2D rb;
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI livesUI;
+    public static bool isMagnet;
 
    private void Start()
    {
-    initialPosition = transform.position;  // get original position of shuttlecock
-    rb = GetComponent<Rigidbody2D>();
+     isMagnet = false;
+     initialPosition = transform.position;  // get original position of shuttlecock
+     rb = GetComponent<Rigidbody2D>();
    }
-    
+ 
     /*
     Item interactions when collide with shuttlecock
     coin : adds 1 to player score, update game UI
@@ -53,7 +55,7 @@ public class ItemCollector : MonoBehaviour
         livesUI.text = "Lives: " + lives;
         if (lives == 0)
         {
-         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+         SceneManager.LoadScene("End Screen");
         }
         else 
         {
@@ -69,6 +71,11 @@ public class ItemCollector : MonoBehaviour
         foreach(GameObject Obstacle in enemies)
         GameObject.Destroy(Obstacle);
        }
-    
+
+       if (collison.gameObject.CompareTag("Magnet"))
+       {
+         isMagnet = true;
+         Destroy(collison.gameObject);
+       }
     }
 }
