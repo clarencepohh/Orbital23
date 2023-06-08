@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 7328146483157765244}
   - component: {fileID: 5229493044042253657}
   - component: {fileID: 4780892378765534130}
+  - component: {fileID: 6572522216630705222}
+  - component: {fileID: 8762493280309494337}
   m_Layer: 0
   m_Name: MovingObsUD
   m_TagString: Untagged
@@ -160,6 +162,39 @@ MonoBehaviour:
   ways: {fileID: 5077135861166448150}
   wayPoints: []
   waitDuration: 1
+--- !u!114 &6572522216630705222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950824317276275320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e66f534b6ff5a34fae009b89afd4754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &8762493280309494337
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950824317276275320}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &5077135861166448150
 GameObject:
   m_ObjectHideFlags: 0
