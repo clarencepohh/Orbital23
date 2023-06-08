@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SpawnTest : MonoBehaviour
 {
-    public GameObject Obstacle;
+    public GameObject Coin, Heart;
     public float maxX;
     public float minX;
     public float maxY;
     public float minY;
     public float TimebetSpawn;
     private float SpawnTime; 
+   // public float amtobj;
 
     void Update()
     {
@@ -26,6 +27,7 @@ public class SpawnTest : MonoBehaviour
         float X = Random.Range(minX, maxX);
         float Y = Random.Range(minY, maxY);
 
-        Instantiate(Obstacle, transform.position + new Vector3(X, Y, 0), transform.rotation);
+        Instantiate(Coin, transform.position + new Vector3(X, Y, 0), transform.rotation);
+        Instantiate(Heart, transform.position + new Vector3(X, Y, 0), transform.rotation);
     }
 }

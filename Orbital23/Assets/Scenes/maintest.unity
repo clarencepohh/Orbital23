@@ -154,7 +154,7 @@ Transform:
   m_Children:
   - {fileID: 1436577787}
   m_Father: {fileID: 519420032}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &38203965
 MonoBehaviour:
@@ -408,8 +408,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 654360887}
-  - {fileID: 1783135571}
   - {fileID: 38203964}
+  - {fileID: 1783135571}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1713,7 +1713,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d26f432fff253d4681b6a58e5fa32f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Obstacle: {fileID: 4771771553566820919, guid: d3b898e3f617d8840bf12ab7cc65de54, type: 3}
+  Coin: {fileID: 4771771553566820919, guid: d3b898e3f617d8840bf12ab7cc65de54, type: 3}
+  Heart: {fileID: 3886248194201797609, guid: 80e4227bd1eb7c94e9d6b2b964830e9d, type: 3}
   maxX: 4.6
   minX: -4.6
   maxY: 5
@@ -1732,7 +1733,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145961837
 GameObject:

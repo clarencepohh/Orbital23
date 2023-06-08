@@ -10,7 +10,7 @@ public class SpawnItem : MonoBehaviour
     private Transform playerTransform;
     private float spawnY = 0.0f; // position on Y axis to spawn items
     private float length = 5f;   // distance between 2 items
-    private int amtobj = 10;     // number of each item on screen 
+    public int amtobj = 10;     // number of each item on screen 
     public float minHeight = -5f;  // range of where items can spawn, for randomness
     public float maxHeight = 5f;
     public float leftBound = -5f;
