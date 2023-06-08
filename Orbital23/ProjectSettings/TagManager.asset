@@ -10,6 +10,7 @@ TagManager:
   - Smash
   - Ground
   - Shuttlecock
+  - Magnet
   layers:
   - Default
   - TransparentFX

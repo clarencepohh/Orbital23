@@ -14,6 +14,11 @@ public class EndMenu : MonoBehaviour
 
     public void Restart()
     {
+        SceneManager.LoadScene("MainGame");
+    }
+
+    public void Menu()
+    {
         SceneManager.LoadScene("Start Screen");
     }
 }
