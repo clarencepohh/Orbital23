@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 94951051096030033}
   - component: {fileID: 94951051096030061}
   - component: {fileID: 94951051096030062}
-  - component: {fileID: 6961342384850927438}
   - component: {fileID: 1311159790051346185}
+  - component: {fileID: 7179153282619993111}
   m_Layer: 0
   m_Name: Test Obstacle 2
   m_TagString: Untagged
@@ -98,7 +98,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -147,7 +147,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &6961342384850927438
+--- !u!114 &1311159790051346185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94951051096030034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e66f534b6ff5a34fae009b89afd4754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &7179153282619993111
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -168,15 +180,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1311159790051346185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94951051096030034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e66f534b6ff5a34fae009b89afd4754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
