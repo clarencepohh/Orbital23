@@ -22,4 +22,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate() {
         rb.MovePosition(position); // Placed in FixedUpdate as gameObject is physics simulated
     }
+
+    // private void OnCollisionEnter(Collision col) {
+    //     if (col.gameObject.tag == "Shuttlecock")
+    //     {
+    //         Debug.Log("Hit");
+    //         rb = col.gameObject.GetComponent<Rigidbody2D>();
+    //         rb.AddForce(rb.velocity * 100, ForceMode2D.Impulse); // Add force to shuttlecock when it collides with player
+    //     }
+    // }
 }
