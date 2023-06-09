@@ -50,16 +50,17 @@ public class racketswing : MonoBehaviour
         transform.rotation = endRotation;
         rotating = false;
     }
-
+    
     private void OnCollisionEnter2D(Collision2D other) {
-    Debug.Log("Hit");
         if (other.gameObject.tag == "Shuttlecock" && rotating)
         {
-           ContactPoint2D pointOfCollision = other.GetContact(0);
-           Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
-           Vector2 directionHit = rb.position - pointOfCollision.point;
-        //    Vector2 hitDirection = (other.transform.position - transform.position).normalized; 
-           rb.AddForce(directionHit * scalarForce, ForceMode2D.Impulse);
+            Renderer childRenderer = transform.GetChild(0).GetComponent<Renderer>();
+            Vector3 center = childRenderer.bounds.center;
+            ContactPoint2D pointOfCollision = other.GetContact(0);
+            Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
+            Vector2 stringsPosition = new Vector2(center.x, center.y);
+            Vector2 directionHit = stringsPosition - pointOfCollision.point;
+            rb.AddForce(directionHit * scalarForce, ForceMode2D.Impulse);
         }
     }  
 }
