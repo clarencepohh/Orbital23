@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 414869970}
   m_Layer: 0
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Shuttlecock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -194,8 +194,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469981453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 0.2218626, y: 0.42553383, z: 1}
+  m_LocalPosition: {x: 0, y: 1.361, z: 0}
+  m_LocalScale: {x: 0.382003, y: 0.73268414, z: 1.7218}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 724629014}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 482839030}
   m_Layer: 0
   m_Name: body
-  m_TagString: Untagged
+  m_TagString: Shuttlecock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -365,8 +365,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632182597}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0007, y: 0.313, z: 0}
-  m_LocalScale: {x: 0.04950521, y: 0.62610245, z: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.093861885, y: 1.1870903, z: 1.896}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 724629014}
@@ -459,6 +459,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 724629014}
+  - component: {fileID: 724629015}
+  - component: {fileID: 724629016}
+  - component: {fileID: 724629017}
   m_Layer: 0
   m_Name: Racket
   m_TagString: Untagged
@@ -473,7 +476,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724629013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -482,7 +485,54 @@ Transform:
   - {fileID: 469981454}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &724629015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724629013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08aef7834f6b7c24d8cf729e69891fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lerpDuration: 0.3
+--- !u!114 &724629016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724629013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa41f98778592c4eba77345eb91c1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: 0.8
+--- !u!50 &724629017
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724629013}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &924865713
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +618,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1839735485 &924865717
 Tilemap:
@@ -696,8 +746,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 924865713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12, y: -1.62, z: 0.07311907}
-  m_LocalScale: {x: 3.4094865, y: 3.4094865, z: 3.4094865}
+  m_LocalPosition: {x: -0.028, y: 3.033, z: 0.07311907}
+  m_LocalScale: {x: 2.0426233, y: 2.0426233, z: 2.0426233}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 482839029}
@@ -801,7 +851,7 @@ GameObject:
   - component: {fileID: 1671899160}
   m_Layer: 0
   m_Name: CenterOfGravity
-  m_TagString: Untagged
+  m_TagString: Shuttlecock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
