@@ -23,7 +23,6 @@ public class ShuttlecockMovement : MonoBehaviour
             // rotate shuttlecock to face direction of movement
             Quaternion toRotate = Quaternion.LookRotation(Vector3.forward, targetDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotate, rotationSpeed * Time.deltaTime * 60 * (targetDirection.magnitude / 10)); 
-            // Time.deltaTime * 60 is to make the rotation speed independent of the frame rate
         }
     }
 }
