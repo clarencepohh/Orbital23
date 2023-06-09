@@ -60,7 +60,7 @@ public class ItemCollector : MonoBehaviour
         else 
         {
             transform.position = initialPosition;
-            rb.velocity = new Vector3 (0, 0, 0);
+            rb.velocity = new Vector3 (0, 0, 0); // spawn based on position of racket
         }
        } 
 

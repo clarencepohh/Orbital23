@@ -16,7 +16,7 @@ public class SpawnStaticObs : MonoBehaviour
     {
         if(Time.time > SpawnTime)
         {
-            Spawn();
+            Spawn(); //add obj limit
             SpawnTime = Time.time + TimeBetweenSpawn;
         }
     }
@@ -28,4 +28,4 @@ public class SpawnStaticObs : MonoBehaviour
 
         Instantiate(Object, transform.position + new Vector3(X, Y, 0), transform.rotation);
     }
-}
+}   
