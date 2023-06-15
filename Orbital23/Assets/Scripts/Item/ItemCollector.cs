@@ -16,11 +16,13 @@ public class ItemCollector : MonoBehaviour
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI livesUI;
     public static bool isMagnet;
+    public GameObject respawnPoint;
 
     SpawnCoin coinCount;
     SpawnHeart heartCount;
     SpawnMagnet magnetCount;
     SpawnSmash smashCount;
+    Rigidbody2D Stop;
 
    private void Start()
    {
@@ -42,54 +44,63 @@ public class ItemCollector : MonoBehaviour
     smash: destroys all obstacles
     */
 
-    private void OnTriggerEnter2D(Collider2D collison)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
-       if (collison.gameObject.CompareTag("Coin"))
+       if (collision.gameObject.CompareTag("Coin"))
        {
-        Destroy(collison.gameObject);
+        Destroy(collision.gameObject);
         score++;
         scoreUI.text = "Score: " + score;
         coinCount.DecreaseCounter();
        }
 
-       if (collison.gameObject.CompareTag("Heart"))
+       if (collision.gameObject.CompareTag("Heart"))
        {
-        Destroy(collison.gameObject);
+        Destroy(collision.gameObject);
         lives++;
         livesUI.text = "Lives: " + lives;
         heartCount.DecreaseCounter();
        }
 
-       if (collison.gameObject.CompareTag("Ground"))
+       if (collision.gameObject.CompareTag("Ground"))
        {
         lives--;
         livesUI.text = "Lives: " + lives;
         if (lives == 0)
         {
-         SceneManager.LoadScene("End Screen");
+          SceneManager.LoadScene("End Screen");
         }
         else 
         {
-            transform.position = initialPosition;
-            rb.velocity = new Vector3 (0, 0, 0); // spawn based on position of racket, aft delay
+          StartCoroutine(newPosition()); 
         }
        } 
 
-       if (collison.gameObject.CompareTag("Smash"))
+       if (collision.gameObject.CompareTag("Smash"))
        {
-        Destroy(collison.gameObject);
+        Destroy(collision.gameObject);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Obstacle");
         foreach(GameObject Obstacle in enemies)
         GameObject.Destroy(Obstacle);
         smashCount.DecreaseCounter();
        }
 
-       if (collison.gameObject.CompareTag("Magnet"))
+       if (collision.gameObject.CompareTag("Magnet"))
        {
          isMagnet = true;
-         Destroy(collison.gameObject);
+         Destroy(collision.gameObject);
          magnetCount.DecreaseCounter();
        }
+    }
+
+    private IEnumerator newPosition()
+    {
+      transform.position = respawnPoint.transform.position;
+      rb.velocity = new Vector3 (0, 0, 0); 
+      Stop = GameObject.FindGameObjectWithTag("Shuttlecock").GetComponent<Rigidbody2D>();
+      Stop.constraints = RigidbodyConstraints2D.FreezePosition;
+      yield return new WaitForSeconds(3);   
+      Stop.constraints = RigidbodyConstraints2D.None;
     }
 }
