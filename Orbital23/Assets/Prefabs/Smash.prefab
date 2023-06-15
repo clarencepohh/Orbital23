@@ -150,6 +150,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3cf44fedfd2074caa75047606763f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToCheck:
+  - Coin
+  - Heart
+  - Magnet
+  - Smash
+  - Obstacle
 --- !u!95 &-3741980830037800693
 Animator:
   serializedVersion: 5

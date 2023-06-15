@@ -11,6 +11,7 @@ TagManager:
   - Ground
   - Shuttlecock
   - Magnet
+  - Spawn
   layers:
   - Default
   - TransparentFX

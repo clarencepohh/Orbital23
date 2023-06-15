@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4771771553566820918}
   - component: {fileID: -6510236263560793913}
   - component: {fileID: 8079162803041750171}
-  - component: {fileID: 2890516869776582067}
   - component: {fileID: -7778838266337827560}
   - component: {fileID: 718828143877585761}
+  - component: {fileID: 7956226067404323513}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -139,18 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f151592f9310074591505009b5f990c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2890516869776582067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4771771553566820919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e66f534b6ff5a34fae009b89afd4754, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-7778838266337827560
 Rigidbody2D:
   serializedVersion: 4
@@ -182,5 +170,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac3cf44fedfd2074caa75047606763f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagsToCheck:
+  - Coin
+  - Heart
+  - Magnet
+  - Smash
+  - Obstacle
+--- !u!114 &7956226067404323513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4771771553566820919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e66f534b6ff5a34fae009b89afd4754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

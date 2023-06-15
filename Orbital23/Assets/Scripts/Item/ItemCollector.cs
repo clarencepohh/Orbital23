@@ -17,11 +17,21 @@ public class ItemCollector : MonoBehaviour
     public TextMeshProUGUI livesUI;
     public static bool isMagnet;
 
+    SpawnCoin coinCount;
+    SpawnHeart heartCount;
+    SpawnMagnet magnetCount;
+    SpawnSmash smashCount;
+
    private void Start()
    {
      isMagnet = false;
      initialPosition = transform.position;  // get original position of shuttlecock
      rb = GetComponent<Rigidbody2D>();
+
+     coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
+     heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
+     magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
+     smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
    }
  
     /*
@@ -40,6 +50,7 @@ public class ItemCollector : MonoBehaviour
         Destroy(collison.gameObject);
         score++;
         scoreUI.text = "Score: " + score;
+        coinCount.DecreaseCounter();
        }
 
        if (collison.gameObject.CompareTag("Heart"))
@@ -47,6 +58,7 @@ public class ItemCollector : MonoBehaviour
         Destroy(collison.gameObject);
         lives++;
         livesUI.text = "Lives: " + lives;
+        heartCount.DecreaseCounter();
        }
 
        if (collison.gameObject.CompareTag("Ground"))
@@ -60,7 +72,7 @@ public class ItemCollector : MonoBehaviour
         else 
         {
             transform.position = initialPosition;
-            rb.velocity = new Vector3 (0, 0, 0); // spawn based on position of racket
+            rb.velocity = new Vector3 (0, 0, 0); // spawn based on position of racket, aft delay
         }
        } 
 
@@ -70,12 +82,14 @@ public class ItemCollector : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Obstacle");
         foreach(GameObject Obstacle in enemies)
         GameObject.Destroy(Obstacle);
+        smashCount.DecreaseCounter();
        }
 
        if (collison.gameObject.CompareTag("Magnet"))
        {
          isMagnet = true;
          Destroy(collison.gameObject);
+         magnetCount.DecreaseCounter();
        }
     }
 }

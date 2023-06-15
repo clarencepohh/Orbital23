@@ -4,28 +4,42 @@ using UnityEngine;
 
 public class SpawnMovingObsLR : MonoBehaviour
 {
-    public GameObject Object;
+    public GameObject objectToSpawn;
     public float maxX;
     public float minX;
     public float maxY;
     public float minY;
-    public float TimeBetweenSpawn;
-    private float SpawnTime;
+    public float timeBetweenSpawn;
+    public int itemLimit;
+
+    private float spawnTime;
+    private int spawnedItemsCount;
+
+    void Start()
+    {
+        spawnTime = Time.time + timeBetweenSpawn;
+        spawnedItemsCount = 0;
+    }
 
     void Update()
     {
-        if(Time.time > SpawnTime)
+        if (Time.time > spawnTime && spawnedItemsCount < itemLimit)
         {
             Spawn();
-            SpawnTime = Time.time + TimeBetweenSpawn;
+            spawnTime = Time.time + timeBetweenSpawn;
+            spawnedItemsCount++;
         }
     }
 
     void Spawn()
     {
-        float X = Random.Range(minX, maxX);
-        float Y = Random.Range(minY, maxY);
+        float x = Random.Range(minX, maxX);
+        float y = Random.Range(minY, maxY);
+        GameObject spawnedObject = Instantiate(objectToSpawn, transform.position + new Vector3(x, y, 0), transform.rotation);
+    }
 
-        Instantiate(Object, transform.position + new Vector3(X, Y, 0), transform.rotation);
+    public void DecreaseCounter()
+    {
+        spawnedItemsCount--;
     }
 }
