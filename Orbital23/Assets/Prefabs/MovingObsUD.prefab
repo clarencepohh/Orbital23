@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7560507220106906642}
   - component: {fileID: 5099668113895854020}
   m_Layer: 0
-  m_Name: MovingObsUD 1
+  m_Name: MovingObsUD
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3cf44fedfd2074caa75047606763f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToCheck:
+  - Obstacle
 --- !u!1 &4739406529929659072
 GameObject:
   m_ObjectHideFlags: 0

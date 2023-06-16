@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3cf44fedfd2074caa75047606763f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tagsToCheck:
+  - Obstacle
 --- !u!1 &4739406529929659072
 GameObject:
   m_ObjectHideFlags: 0
