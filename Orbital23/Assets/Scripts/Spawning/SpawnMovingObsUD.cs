@@ -42,4 +42,9 @@ public class SpawnMovingObsUD : MonoBehaviour
     {
         spawnedItemsCount--;
     }
+
+    public void ResetCounter()
+    {
+        spawnedItemsCount = 0;
+    }
 }

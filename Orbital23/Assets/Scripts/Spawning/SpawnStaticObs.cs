@@ -43,4 +43,9 @@ public class SpawnStaticObs : MonoBehaviour
         spawnedItemsCount--;
     }  
 
+    public void ResetCounter()
+    {
+        spawnedItemsCount = 0;
+    }
+
 }

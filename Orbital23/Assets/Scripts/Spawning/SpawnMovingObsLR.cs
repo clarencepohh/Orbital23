@@ -42,4 +42,9 @@ public class SpawnMovingObsLR : MonoBehaviour
     {
         spawnedItemsCount--;
     }
+
+    public void ResetCounter()
+    {
+        spawnedItemsCount = 0;
+    }
 }

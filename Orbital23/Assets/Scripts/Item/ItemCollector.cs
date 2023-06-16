@@ -22,6 +22,9 @@ public class ItemCollector : MonoBehaviour
     SpawnHeart heartCount;
     SpawnMagnet magnetCount;
     SpawnSmash smashCount;
+    SpawnStaticObs statobsCount;
+    SpawnMovingObsLR LRcount;
+    SpawnMovingObsUD UDcount;
     Rigidbody2D Stop;
 
    private void Start()
@@ -34,6 +37,9 @@ public class ItemCollector : MonoBehaviour
      heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
      magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
      smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
+     statobsCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnStaticObs>();
+     LRcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsLR>();
+     UDcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsUD>();
    }
  
     /*
@@ -84,6 +90,7 @@ public class ItemCollector : MonoBehaviour
         foreach(GameObject Obstacle in enemies)
         GameObject.Destroy(Obstacle);
         smashCount.DecreaseCounter();
+        StartCoroutine(disableObs());   
        }
 
        if (collision.gameObject.CompareTag("Magnet"))
@@ -91,6 +98,7 @@ public class ItemCollector : MonoBehaviour
          isMagnet = true;
          Destroy(collision.gameObject);
          magnetCount.DecreaseCounter();
+         StartCoroutine(disableMagnet());
        }
     }
 
@@ -102,5 +110,21 @@ public class ItemCollector : MonoBehaviour
       Stop.constraints = RigidbodyConstraints2D.FreezePosition;
       yield return new WaitForSeconds(3);   
       Stop.constraints = RigidbodyConstraints2D.None;
+    }
+
+    private IEnumerator disableMagnet()
+    {
+      yield return new WaitForSeconds(10);
+      Debug.Log("magnetend");
+      isMagnet = false;
+    }
+
+    private IEnumerator disableObs()
+    {
+      yield return new WaitForSeconds(10);
+      Debug.Log("smashend");
+      statobsCount.ResetCounter();
+      LRcount.ResetCounter();
+      UDcount.ResetCounter();
     }
 }
