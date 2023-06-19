@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckOverlap : MonoBehaviour
 {
+    public string[] tagsToCheck;
     private bool canDestroy = true;
 
     private void Start()
@@ -19,11 +20,24 @@ public class CheckOverlap : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the colliding object has the same tag as the spawned object and is a different instance
-        if (canDestroy && collision.gameObject.CompareTag(gameObject.tag) && collision.gameObject != gameObject)
+        // Check if the colliding object has any of the tags specified and is a different instance
+        if (canDestroy && CheckCollisionTag(collision.gameObject.tag) && collision.gameObject != gameObject)
         {
             // Destroy the spawned object
             Destroy(gameObject);
         }
+    }
+
+    private bool CheckCollisionTag(string tag)
+    {
+        // Iterate through the tagsToCheck array and check if the provided tag exists
+        for (int i = 0; i < tagsToCheck.Length; i++)
+        {
+            if (tagsToCheck[i] == tag)
+            {
+                return true; // Tag found in the array
+            }
+        }
+        return false; // Tag not found in the array
     }
 }
