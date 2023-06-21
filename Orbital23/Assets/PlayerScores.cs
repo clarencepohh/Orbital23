@@ -11,8 +11,8 @@ public class PlayerScores : MonoBehaviour
     public static int playerScore;
     public static string playerName;
     User user = new User();
+    private bool hasData;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerScore = random.Next(0, 101);
@@ -32,15 +32,16 @@ public class PlayerScores : MonoBehaviour
 
     private void UpdateScore(bool hasData)
     {
-        if (!hasData) 
+        if (hasData) 
         {
-            scoreText.text = "No such user";
+            scoreText.text = "Score: " + user.userScore;
         } 
         else 
         {
-            scoreText.text = "Score: " + user.userScore;
+            scoreText.text = "No such user";
         }
     }
+
     private void PostToDatabase()
     {   
         User user = new User();
@@ -49,17 +50,18 @@ public class PlayerScores : MonoBehaviour
 
     private void GetFromDatabase()
     {
-        bool hasData = false;
         RestClient.Get<User>("https://orbital23-coc-default-rtdb.asia-southeast1.firebasedatabase.app/" + nameText.text + ".json").Then(response => 
         {
             user = response;
+            Debug.Log("Found user data");
             hasData = true;
         })
+        
         .Catch(error =>
         {
+            Debug.Log("No found data");
             hasData = false;
         });
-        
         UpdateScore(hasData);
     }
 }
