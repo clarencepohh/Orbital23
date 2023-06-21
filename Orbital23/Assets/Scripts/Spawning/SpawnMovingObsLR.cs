@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for spawning movingobsLR item, based on a timer, with counter to limit item spawn
+
 public class SpawnMovingObsLR : MonoBehaviour
 {
     public GameObject objectToSpawn;

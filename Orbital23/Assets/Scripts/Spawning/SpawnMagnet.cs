@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for spawning magnet item, based on a timer, with counter to limit item spawn
+
 public class SpawnMagnet : MonoBehaviour
 {
     public GameObject objectToSpawn;
