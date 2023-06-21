@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for spawning staticobs item, based on a timer, with counter to limit item spawn
+
 public class SpawnStaticObs : MonoBehaviour
 {
     public GameObject objectToSpawn;

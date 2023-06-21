@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script to destroy items below the user by checking for collision with ground object and continue spawning new items
+// itemCount to track number of items currently spawned
+
 public class GroundCollision : MonoBehaviour
 {
     SpawnCoin coinCount;

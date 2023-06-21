@@ -40,14 +40,16 @@ public class ItemCollector : MonoBehaviour
      statobsCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnStaticObs>();
      LRcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsLR>();
      UDcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsUD>();
+     // itemCount to track number of items currently spawned
    }
  
     /*
     Item interactions when collide with shuttlecock
     coin : adds 1 to player score, update game UI
     heart: adds 1 to player lives, update game UI
-    ground: triggers game over if player lives is 0 else reset shuttlecock to original position
+    ground: triggers game over if player lives is 0 else reset shuttlecock to respawn position
     smash: destroys all obstacles
+    magnet: moves all coins within radius towards shuttlecock
     */
 
     private void OnTriggerEnter2D(Collider2D collision)

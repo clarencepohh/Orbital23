@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for moving obstacles, obstacle moves between 2 points set in prefab
+
 public class Obsmove : MonoBehaviour
 {
     public float speed;

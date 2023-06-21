@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script to check for item collision to prevent spawn overlap
+
 public class CheckOverlap : MonoBehaviour
 {
     public string[] tagsToCheck;
@@ -10,7 +12,7 @@ public class CheckOverlap : MonoBehaviour
     private void Start()
     {
         // Allow destruction after a delay
-        Invoke("DisableDestruction", 0.1f); // Adjust the delay as needed
+        Invoke("DisableDestruction", 0.1f); 
     }
 
     private void DisableDestruction()
