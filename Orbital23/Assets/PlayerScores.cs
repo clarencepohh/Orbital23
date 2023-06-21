@@ -30,9 +30,9 @@ public class PlayerScores : MonoBehaviour
         GetFromDatabase();
     }
 
-    private void UpdateScore()
+    private void UpdateScore(bool hasData)
     {
-        if (user == null)
+        if (!hasData) 
         {
             scoreText.text = "No such user";
         } 
@@ -49,10 +49,17 @@ public class PlayerScores : MonoBehaviour
 
     private void GetFromDatabase()
     {
+        bool hasData = false;
         RestClient.Get<User>("https://orbital23-coc-default-rtdb.asia-southeast1.firebasedatabase.app/" + nameText.text + ".json").Then(response => 
         {
             user = response;
-            UpdateScore();
+            hasData = true;
+        })
+        .Catch(error =>
+        {
+            hasData = false;
         });
+        
+        UpdateScore(hasData);
     }
 }
