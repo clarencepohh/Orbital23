@@ -12,7 +12,7 @@ public class CheckOverlap : MonoBehaviour
     private void Start()
     {
         // Allow destruction after a delay
-        Invoke("DisableDestruction", 0.1f); 
+        Invoke("DisableDestruction", 0.1f); //adjust delay as needed
     }
 
     private void DisableDestruction()

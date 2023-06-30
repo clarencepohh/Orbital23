@@ -187,6 +187,7 @@ MonoBehaviour:
   - Magnet
   - Smash
   - Obstacle
+  - Enlarge
 --- !u!114 &7481830691994830767
 MonoBehaviour:
   m_ObjectHideFlags: 0

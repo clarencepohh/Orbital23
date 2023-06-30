@@ -12,6 +12,8 @@ TagManager:
   - Shuttlecock
   - Magnet
   - Spawn
+  - Enlarge
+  - Racket
   layers:
   - Default
   - TransparentFX

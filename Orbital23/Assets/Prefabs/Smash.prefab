@@ -156,6 +156,7 @@ MonoBehaviour:
   - Magnet
   - Smash
   - Obstacle
+  - Enlarge
 --- !u!95 &-3741980830037800693
 Animator:
   serializedVersion: 5
