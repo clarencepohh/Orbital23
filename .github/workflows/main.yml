@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - C:\Users\CK\Documents\GitHub\Orbital23
+          - C:\Users\CK\Documents\GitHub\Orbital23\Orbital23\Library
         testMode:
           - playmode
           - editmode
