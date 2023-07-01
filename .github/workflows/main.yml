@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - test-project
+          - C:\Users\CK\Documents\GitHub\Orbital23
         testMode:
           - playmode
           - editmode
