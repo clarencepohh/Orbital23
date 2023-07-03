@@ -84,7 +84,7 @@ jobs:
       - uses: game-ci/unity-builder@v2
         with:
           targetPlatform: StandaloneWindows64
-          projectPath: .
+          projectPath: Orbital23
 
       - uses: actions/upload-artifact@v2
         with:
