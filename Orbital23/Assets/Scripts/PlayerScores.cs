@@ -55,13 +55,14 @@ public class PlayerScores : MonoBehaviour
             user = response;
             Debug.Log("Found user data");
             hasData = true;
+            UpdateScore(hasData);
         })
         
         .Catch(error =>
         {
             Debug.Log("No found data");
             hasData = false;
+            UpdateScore(hasData);
         });
-        UpdateScore(hasData);
     }
 }
