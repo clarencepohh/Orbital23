@@ -19,6 +19,7 @@ public class ItemCollector : MonoBehaviour
     public GameObject respawnPoint;
 
     SpawnCoin coinCount;
+    SpawnEnlarge enlargeCount;
     SpawnHeart heartCount;
     SpawnMagnet magnetCount;
     SpawnSmash smashCount;
@@ -34,6 +35,7 @@ public class ItemCollector : MonoBehaviour
      rb = GetComponent<Rigidbody2D>();
 
      coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
+     enlargeCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnEnlarge>();
      heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
      magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
      smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
@@ -102,6 +104,12 @@ public class ItemCollector : MonoBehaviour
          magnetCount.DecreaseCounter();
          StartCoroutine(disableMagnet());
        }
+
+       if (collision.gameObject.CompareTag("Enlarge"))
+       {
+        Destroy(collision.gameObject);
+        StartCoroutine(disableEnlarge());
+       }
     }
 
     private IEnumerator newPosition()
@@ -128,5 +136,16 @@ public class ItemCollector : MonoBehaviour
       statobsCount.ResetCounter();
       LRcount.ResetCounter();
       UDcount.ResetCounter();
+    }
+
+    private IEnumerator disableEnlarge()
+    {
+      GameObject racket = GameObject.FindGameObjectWithTag("Racket");
+      Vector3 increase = new Vector3 (1,1,1);
+      racket.transform.localScale += increase;
+      yield return new WaitForSeconds(10);
+      racket.transform.localScale -= increase;
+      Debug.Log("enlargeend");
+      enlargeCount.DecreaseCounter();
     }
 }

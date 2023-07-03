@@ -8,6 +8,7 @@ using UnityEngine;
 public class GroundCollision : MonoBehaviour
 {
     SpawnCoin coinCount;
+    SpawnEnlarge enlargeCount;
     SpawnHeart heartCount;
     SpawnMagnet magnetCount;
     SpawnSmash smashCount;
@@ -18,6 +19,7 @@ public class GroundCollision : MonoBehaviour
     void Start()
     {
         coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
+        enlargeCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnEnlarge>();
         heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
         magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
         smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
@@ -32,13 +34,13 @@ public class GroundCollision : MonoBehaviour
         {
             Destroy(gameObject);
             coinCount.DecreaseCounter();
+            enlargeCount.DecreaseCounter();
             heartCount.DecreaseCounter();
             magnetCount.DecreaseCounter();
             smashCount.DecreaseCounter();
             statobsCount.DecreaseCounter();
             LRcount.DecreaseCounter();
-            UDcount.DecreaseCounter();
-            
+            UDcount.DecreaseCounter();  
         }
     }
 }
