@@ -2,6 +2,9 @@ name: Orbital23
 
 on: [push, pull_request]
 
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
 jobs:
   testAllModes:
     permissions: write-all
