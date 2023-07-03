@@ -56,7 +56,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - Orbital23
+          - Orbital23/Orbital23
         targetPlatform:
           - StandaloneOSX # Build a macOS standalone (Intel 64-bit).
           - StandaloneWindows # Build a Windows standalone.
