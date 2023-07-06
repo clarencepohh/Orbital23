@@ -9,8 +9,8 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int score = 0;
-    private int lives = 1;
+    public int score = 0;
+    public int lives = 1;
     private Vector3 initialPosition;
     private Rigidbody2D rb;
     public TextMeshProUGUI scoreUI;
@@ -54,7 +54,7 @@ public class ItemCollector : MonoBehaviour
     magnet: moves all coins within radius towards shuttlecock
     */
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         
        if (collision.gameObject.CompareTag("Coin"))
