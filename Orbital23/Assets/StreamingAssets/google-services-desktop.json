@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "96373548146",
+    "project_id": "orbital23-coc",
+    "storage_bucket": "orbital23-coc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96373548146:android:b33dd5cf9be11ca1480eeb",
+        "android_client_info": {
+          "package_name": "com.childrenofcolin.verticalbadminton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96373548146-q3le2jhakptid23f3fh9cjs1iqa9jf9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChbauPv9tF1ejV2jlPfHwKc8VQRQVPG6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96373548146-q3le2jhakptid23f3fh9cjs1iqa9jf9m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

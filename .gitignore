@@ -77,3 +77,4 @@ tool = unityyamlmerge
 [mergetool "unityyamlmerge"]
 trustExitCode = false
 cmd = 'C:\Program Files\Unity\Hub\Editor\2021.3.25f1\Editor\Data\ToolsUnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "%MERGED"
+Orbital23/Assets/Firebase/Plugins/x86_64/FirebaseCppApp-11_2_0.bundle
