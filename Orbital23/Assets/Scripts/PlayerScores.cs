@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 using Random = System.Random;
 using Proyecto26;
 using TMPro;    
+
 public class PlayerScores : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
@@ -12,11 +14,13 @@ public class PlayerScores : MonoBehaviour
     public static string playerName;
     User user = new User();
     private bool hasData;
+    User[] userArray;
 
     void Start()
     {
         playerScore = random.Next(0, 101);
         scoreText.text = "Score: " + playerScore;
+        GetLeaderboard();
     }
 
     public void OnSubmit()
@@ -65,4 +69,47 @@ public class PlayerScores : MonoBehaviour
             UpdateScore(hasData);
         });
     }
+
+    private void GetLeaderboard()
+    {
+        RestClient.GetArray<User>("https://orbital23-coc-default-rtdb.asia-southeast1.firebasedatabase.app/").Then(allUsers => {
+            EditorUtility.DisplayDialog("JSON Array", JsonHelper.ArrayToJsonString<User>(allUsers, true), "Ok");
+            userArray = allUsers;
+            Debug.Log("Found user data");
+            foreach (User user in userArray)
+            {
+                Debug.Log(user.userName + " | " + user.userScore);
+            }
+            hasData = true;
+        });
+
+        // RestClient.GetArray<User>("https://orbital23-coc-default-rtdb.asia-southeast1.firebasedatabase.app/.json").Then(allUsers => 
+        // {
+        //     userArray = allUsers;
+        //     Debug.Log("Found user data");
+        //     foreach (User user in userArray)
+        //     {
+        //         Debug.Log(user.userName + " | " + user.userScore);
+        //     }
+        //     hasData = true;
+        // })
+        
+        // .Catch(error =>
+        // {
+        //     Debug.Log("No found data");
+        //     hasData = false;
+        // });
+    } 
+
+    // steps for the database page
+
+    // 1. read data from the firebase realtime database
+
+    // 2. store as a sorted array
+
+    // 3. display the sorted array on the leaderboard page
+
+    // 4. update the leaderboard page every time it is loaded
+
+
 }
