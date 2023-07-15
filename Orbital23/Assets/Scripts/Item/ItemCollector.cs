@@ -9,7 +9,7 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int score = 0;
+    public int score = 0;
     private int lives = 1;
     private Vector3 initialPosition;
     private Rigidbody2D rb;
