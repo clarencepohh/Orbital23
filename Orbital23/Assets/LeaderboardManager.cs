@@ -10,7 +10,8 @@ public class LeaderboardManager : MonoBehaviour
     public TextMeshProUGUI playerNames;
     public TextMeshProUGUI playerScores;
 
-    private void Start() {
+    private void Start() 
+    {
         this.enabled = false;
     }
 
