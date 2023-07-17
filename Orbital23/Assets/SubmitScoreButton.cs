@@ -5,16 +5,15 @@ using TMPro;
 
 public class SubmitScoreButton : MonoBehaviour
 {
-    public LeaderboardManager leaderboard;
-    public LeaderboardTestItemCollector itemCollector;
-
-    public void SubmitScoreRoutine()
+    public PlayerNameManager playerNameManager;
+    public int score;
+    public void SubmitScore()
     {
-        StartCoroutine(SubmitScore());
+        StartCoroutine(SubmitScoreRoutine());
     }
 
-    IEnumerator SubmitScore()
+    IEnumerator SubmitScoreRoutine()
     {
-        yield return leaderboard.SubmitScoreRoutine(itemCollector.score);
+        yield return playerNameManager.SubmitScoreRoutine(score);
     }
 }
