@@ -7,27 +7,28 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     public LeaderboardManager leaderboard;
-    public TMP_InputField playerNameInputField;
+    // comment out to put in game over scene instead
+    //public TMP_InputField playerNameInputField;
     
     void Start()
     {
         StartCoroutine(LoginRoutine());
     }
 
-    public void SetPlayerName()
-    {
-        LootLockerSDKManager.SetPlayerName(playerNameInputField.text, (response) => 
-        {
-            if (response.success)
-            {
-                Debug.Log("Successfully set player name");
-            } 
-            else 
-            {
-                Debug.Log("Could not set player name" + response.Error);
-            }
-        });
-    }
+    // public void SetPlayerName()
+    // {
+    //     LootLockerSDKManager.SetPlayerName(playerNameInputField.text, (response) => 
+    //     {
+    //         if (response.success)
+    //         {
+    //             Debug.Log("Successfully set player name");
+    //         } 
+    //         else 
+    //         {
+    //             Debug.Log("Could not set player name" + response.Error);
+    //         }
+    //     });
+    // }
 
     IEnumerator LoginRoutine()
     {
