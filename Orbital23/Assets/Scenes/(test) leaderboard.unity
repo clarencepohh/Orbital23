@@ -2771,7 +2771,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboard: {fileID: 1207394868}
-  playerNameInputField: {fileID: 1821824918}
 --- !u!4 &1962511644
 Transform:
   m_ObjectHideFlags: 0
