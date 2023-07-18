@@ -6,9 +6,10 @@ using TMPro;
 public class SubmitScoreButton : MonoBehaviour
 {
     public PlayerNameManager playerNameManager;
-    public int score;
+    int score;
     public void SubmitScore()
     {
+        score = ItemCollector.score;
         StartCoroutine(SubmitScoreRoutine());
     }
 
