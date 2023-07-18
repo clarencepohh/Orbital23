@@ -9,7 +9,7 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    private int score = 0;
+    public static int score = 0;
     private int lives = 1;
     private Vector3 initialPosition;
     private Rigidbody2D rb;
@@ -30,19 +30,20 @@ public class ItemCollector : MonoBehaviour
 
    private void Start()
    {
-     isMagnet = false;
-     initialPosition = transform.position;  // get original position of shuttlecock
-     rb = GetComponent<Rigidbody2D>();
+    score = 0;
+    isMagnet = false;
+    initialPosition = transform.position;  // get original position of shuttlecock
+    rb = GetComponent<Rigidbody2D>();
 
-     coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
-     enlargeCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnEnlarge>();
-     heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
-     magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
-     smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
-     statobsCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnStaticObs>();
-     LRcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsLR>();
-     UDcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsUD>();
-     // itemCount to track number of items currently spawned
+    coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
+    enlargeCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnEnlarge>();
+    heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
+    magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
+    smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
+    statobsCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnStaticObs>();
+    LRcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsLR>();
+    UDcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsUD>();
+    // itemCount to track number of items currently spawned
    }
  
     /*
@@ -57,24 +58,24 @@ public class ItemCollector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-       if (collision.gameObject.CompareTag("Coin"))
-       {
+      if (collision.gameObject.CompareTag("Coin"))
+      {
         Destroy(collision.gameObject);
         score++;
         scoreUI.text = "Score: " + score;
         coinCount.DecreaseCounter();
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Heart"))
-       {
+      if (collision.gameObject.CompareTag("Heart"))
+      {
         Destroy(collision.gameObject);
         lives++;
         livesUI.text = "Lives: " + lives;
         heartCount.DecreaseCounter();
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Ground"))
-       {
+      if (collision.gameObject.CompareTag("Ground"))
+      {
         lives--;
         livesUI.text = "Lives: " + lives;
         if (lives == 0)
@@ -85,31 +86,31 @@ public class ItemCollector : MonoBehaviour
         {
           StartCoroutine(newPosition()); 
         }
-       } 
+      } 
 
-       if (collision.gameObject.CompareTag("Smash"))
-       {
+      if (collision.gameObject.CompareTag("Smash"))
+      {
         Destroy(collision.gameObject);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Obstacle");
         foreach(GameObject Obstacle in enemies)
         GameObject.Destroy(Obstacle);
         smashCount.DecreaseCounter();
         StartCoroutine(disableObs());   
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Magnet"))
-       {
+      if (collision.gameObject.CompareTag("Magnet"))
+      {
          isMagnet = true;
          Destroy(collision.gameObject);
          magnetCount.DecreaseCounter();
          StartCoroutine(disableMagnet());
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Enlarge"))
-       {
+      if (collision.gameObject.CompareTag("Enlarge"))
+      {
         Destroy(collision.gameObject);
         StartCoroutine(disableEnlarge());
-       }
+      }
     }
 
     private IEnumerator newPosition()
