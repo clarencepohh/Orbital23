@@ -17,6 +17,8 @@ public class ItemCollector : MonoBehaviour
     public TextMeshProUGUI livesUI;
     public static bool isMagnet;
     public GameObject respawnPoint;
+    public GameObject heartPickupEffect;
+    public GameObject respawnEffect;
 
     SpawnCoin coinCount;
     SpawnEnlarge enlargeCount;
@@ -148,5 +150,43 @@ public class ItemCollector : MonoBehaviour
       racket.transform.localScale -= increase;
       Debug.Log("enlargeend");
       enlargeCount.DecreaseCounter();
+    }
+
+    private void onPickupEffect(string tag)
+    {
+      switch (tag)
+      {
+        case "Coin":
+          // play coin pick up sound
+          break;
+        
+        case "Heart":
+          Instantiate(heartPickupEffect, transform.position, transform.rotation);
+          // play heart pick up sound
+          break;
+        
+        case "Smash":
+          
+          // play bomb sound
+          break;
+        
+        case "Magnet":
+          
+          // play magnet sound
+          break;
+        
+        case "Enlarge":
+          
+          // play enlarge sound
+          break;
+        
+        case "Respawn":
+          Instantiate(respawnEffect, transform.position, transform.rotation);
+          // make respawn flash
+          break;
+        
+        default:
+          break;
+      }
     }
 }
