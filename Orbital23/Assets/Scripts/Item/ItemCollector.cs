@@ -19,6 +19,11 @@ public class ItemCollector : MonoBehaviour
     public GameObject respawnPoint;
     public GameObject heartPickupEffect;
     public GameObject respawnEffect;
+    [SerializeField] private AudioSource coinSoundEffect;
+    [SerializeField] private AudioSource heartSoundEffect;
+    [SerializeField] private AudioSource bombSoundEffect;
+    [SerializeField] private AudioSource magnetSoundEffect;
+    [SerializeField] private AudioSource enlargeSoundEffect;
 
     SpawnCoin coinCount;
     SpawnEnlarge enlargeCount;
@@ -62,6 +67,7 @@ public class ItemCollector : MonoBehaviour
         
       if (collision.gameObject.CompareTag("Coin"))
       {
+        onPickupEffect("Coin");
         Destroy(collision.gameObject);
         score++;
         scoreUI.text = "Score: " + score;
@@ -70,6 +76,7 @@ public class ItemCollector : MonoBehaviour
 
       if (collision.gameObject.CompareTag("Heart"))
       {
+        onPickupEffect("Heart");
         Destroy(collision.gameObject);
         lives++;
         livesUI.text = "Lives: " + lives;
@@ -92,6 +99,7 @@ public class ItemCollector : MonoBehaviour
 
       if (collision.gameObject.CompareTag("Smash"))
       {
+        onPickupEffect("Smash");
         Destroy(collision.gameObject);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Obstacle");
         foreach(GameObject Obstacle in enemies)
@@ -102,14 +110,16 @@ public class ItemCollector : MonoBehaviour
 
       if (collision.gameObject.CompareTag("Magnet"))
       {
-         isMagnet = true;
-         Destroy(collision.gameObject);
-         magnetCount.DecreaseCounter();
-         StartCoroutine(disableMagnet());
+        onPickupEffect("Magnet");
+        isMagnet = true;
+        Destroy(collision.gameObject);
+        magnetCount.DecreaseCounter();
+        StartCoroutine(disableMagnet());
       }
 
       if (collision.gameObject.CompareTag("Enlarge"))
       {
+        onPickupEffect("Enlarge");
         Destroy(collision.gameObject);
         StartCoroutine(disableEnlarge());
       }
@@ -157,32 +167,28 @@ public class ItemCollector : MonoBehaviour
       switch (tag)
       {
         case "Coin":
-          // play coin pick up sound
+          coinSoundEffect.Play();
           break;
         
         case "Heart":
-          Instantiate(heartPickupEffect, transform.position, transform.rotation);
-          // play heart pick up sound
+          //Instantiate(heartPickupEffect, transform.position, transform.rotation);
+          heartSoundEffect.Play();
           break;
         
         case "Smash":
-          
-          // play bomb sound
+          bombSoundEffect.Play();
           break;
         
         case "Magnet":
-          
-          // play magnet sound
+          magnetSoundEffect.Play();
           break;
         
         case "Enlarge":
-          
-          // play enlarge sound
+          enlargeSoundEffect.Play();
           break;
         
         case "Respawn":
-          Instantiate(respawnEffect, transform.position, transform.rotation);
-          // make respawn flash
+          //Instantiate(respawnEffect, transform.position, transform.rotation);
           break;
         
         default:
