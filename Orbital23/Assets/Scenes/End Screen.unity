@@ -976,6 +976,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 274360331}
+  button: {fileID: 169706442}
+  inputField: {fileID: 1396311073}
 --- !u!82 &623809608
 AudioSource:
   m_ObjectHideFlags: 0
