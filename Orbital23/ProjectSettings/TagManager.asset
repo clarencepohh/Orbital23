@@ -14,6 +14,7 @@ TagManager:
   - Spawn
   - Enlarge
   - Racket
+  - Music
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: text
+    uniqueID: 1321669297
     locked: 0

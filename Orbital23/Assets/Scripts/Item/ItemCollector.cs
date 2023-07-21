@@ -9,14 +9,20 @@ using TMPro;
 
 public class ItemCollector : MonoBehaviour
 {
-    public int score = 0;
-    public int lives = 1;
+    public static int score = 0;
+    private int lives = 1;
     private Vector3 initialPosition;
     private Rigidbody2D rb;
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI livesUI;
     public static bool isMagnet;
     public GameObject respawnPoint;
+    public Material respawnMaterial;
+    [SerializeField] private AudioSource coinSoundEffect;
+    [SerializeField] private AudioSource heartSoundEffect;
+    [SerializeField] private AudioSource bombSoundEffect;
+    [SerializeField] private AudioSource magnetSoundEffect;
+    [SerializeField] private AudioSource enlargeSoundEffect;
 
     SpawnCoin coinCount;
     SpawnEnlarge enlargeCount;
@@ -30,19 +36,20 @@ public class ItemCollector : MonoBehaviour
 
    private void Start()
    {
-     isMagnet = false;
-     initialPosition = transform.position;  // get original position of shuttlecock
-     rb = GetComponent<Rigidbody2D>();
+    score = 0;
+    isMagnet = false;
+    initialPosition = transform.position;  // get original position of shuttlecock
+    rb = GetComponent<Rigidbody2D>();
 
-     coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
-     enlargeCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnEnlarge>();
-     heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
-     magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
-     smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
-     statobsCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnStaticObs>();
-     LRcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsLR>();
-     UDcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsUD>();
-     // itemCount to track number of items currently spawned
+    coinCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnCoin>();
+    enlargeCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnEnlarge>();
+    heartCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnHeart>();
+    magnetCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMagnet>();
+    smashCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnSmash>();
+    statobsCount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnStaticObs>();
+    LRcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsLR>();
+    UDcount = GameObject.FindGameObjectWithTag("Spawn").GetComponent<SpawnMovingObsUD>();
+    // itemCount to track number of items currently spawned
    }
  
     /*
@@ -57,24 +64,26 @@ public class ItemCollector : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         
-       if (collision.gameObject.CompareTag("Coin"))
-       {
+      if (collision.gameObject.CompareTag("Coin"))
+      {
+        onPickupEffect("Coin");
         Destroy(collision.gameObject);
         score++;
         scoreUI.text = "Score: " + score;
         coinCount.DecreaseCounter();
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Heart"))
-       {
+      if (collision.gameObject.CompareTag("Heart"))
+      {
+        onPickupEffect("Heart");
         Destroy(collision.gameObject);
         lives++;
         livesUI.text = "Lives: " + lives;
         heartCount.DecreaseCounter();
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Ground"))
-       {
+      if (collision.gameObject.CompareTag("Ground"))
+      {
         lives--;
         livesUI.text = "Lives: " + lives;
         if (lives == 0)
@@ -85,41 +94,46 @@ public class ItemCollector : MonoBehaviour
         {
           StartCoroutine(newPosition()); 
         }
-       } 
+      } 
 
-       if (collision.gameObject.CompareTag("Smash"))
-       {
+      if (collision.gameObject.CompareTag("Smash"))
+      {
+        onPickupEffect("Smash");
         Destroy(collision.gameObject);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Obstacle");
         foreach(GameObject Obstacle in enemies)
         GameObject.Destroy(Obstacle);
         smashCount.DecreaseCounter();
         StartCoroutine(disableObs());   
-       }
+      }
 
-       if (collision.gameObject.CompareTag("Magnet"))
-       {
-         isMagnet = true;
-         Destroy(collision.gameObject);
-         magnetCount.DecreaseCounter();
-         StartCoroutine(disableMagnet());
-       }
+      if (collision.gameObject.CompareTag("Magnet"))
+      {
+        onPickupEffect("Magnet");
+        isMagnet = true;
+        Destroy(collision.gameObject);
+        magnetCount.DecreaseCounter();
+        StartCoroutine(disableMagnet());
+      }
 
-       if (collision.gameObject.CompareTag("Enlarge"))
-       {
+      if (collision.gameObject.CompareTag("Enlarge"))
+      {
+        onPickupEffect("Enlarge");
         Destroy(collision.gameObject);
         StartCoroutine(disableEnlarge());
-       }
+      }
     }
 
     private IEnumerator newPosition()
     {
       transform.position = respawnPoint.transform.position;
+      onPickupEffect("Respawn");
       rb.velocity = new Vector3 (0, 0, 0); 
       Stop = GameObject.FindGameObjectWithTag("Shuttlecock").GetComponent<Rigidbody2D>();
-      Stop.constraints = RigidbodyConstraints2D.FreezePosition;
-      yield return new WaitForSeconds(3);   
+      Stop.constraints = RigidbodyConstraints2D.FreezeAll;
+      yield return new WaitForSeconds(2);   
       Stop.constraints = RigidbodyConstraints2D.None;
+      onPickupEffect("RespawnDone");
     }
 
     private IEnumerator disableMagnet()
@@ -147,5 +161,42 @@ public class ItemCollector : MonoBehaviour
       racket.transform.localScale -= increase;
       Debug.Log("enlargeend");
       enlargeCount.DecreaseCounter();
+    }
+
+    private void onPickupEffect(string tag)
+    {
+      switch (tag)
+      {
+        case "Coin":
+          coinSoundEffect.Play();
+          break;
+        
+        case "Heart":
+          heartSoundEffect.Play();
+          break;
+        
+        case "Smash":
+          bombSoundEffect.Play();
+          break;
+        
+        case "Magnet":
+          magnetSoundEffect.Play();
+          break;
+        
+        case "Enlarge":
+          enlargeSoundEffect.Play();
+          break;
+        
+        case "Respawn":
+          respawnMaterial.SetFloat("_isRespawn", 1.1f);
+          break;
+        
+        case "RespawnDone":
+          respawnMaterial.SetFloat("_isRespawn", 0f);
+          break;
+
+        default:
+          break;
+      }
     }
 }

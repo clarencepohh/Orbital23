@@ -7,9 +7,25 @@ using UnityEngine.SceneManagement;
 
 public class Leaderboard : MonoBehaviour
 {
-    public void Back()
+    private AudioSource clickSoundEffect;
+    public IEnumerator buttonAudioClick()
+    {   
+        bool done = false;
+        clickSoundEffect = GetComponent<AudioSource>();
+        clickSoundEffect.Play();
+        done = true;
+        yield return new WaitWhile(() => done == false);
+    } 
+
+    public void onBackButtonClick()
     {
-       SceneManager.LoadScene("Start Screen"); 
+        StartCoroutine(BackButtonCoroutine());
     }
 
+    public IEnumerator BackButtonCoroutine()
+    {
+        yield return buttonAudioClick();
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene("Start Screen");
+    }
 }
