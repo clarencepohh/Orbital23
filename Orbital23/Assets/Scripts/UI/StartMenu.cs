@@ -44,4 +44,9 @@ public class StartMenu : MonoBehaviour
     {
         StartCoroutine(PlayCoroutine());
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
