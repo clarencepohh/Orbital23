@@ -1342,8 +1342,7 @@ MonoBehaviour:
   scoreUI: {fileID: 909048826}
   livesUI: {fileID: 1321881771}
   respawnPoint: {fileID: 670066643}
-  heartPickupEffect: {fileID: 0}
-  respawnEffect: {fileID: 0}
+  respawnMaterial: {fileID: 2100000, guid: 4248d40a85df20341b5754d0364c85dd, type: 2}
   coinSoundEffect: {fileID: 1209886501}
   heartSoundEffect: {fileID: 1209886504}
   bombSoundEffect: {fileID: 1209886503}
@@ -1511,7 +1510,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!95 &1209886499
