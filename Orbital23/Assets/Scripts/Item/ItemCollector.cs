@@ -131,7 +131,7 @@ public class ItemCollector : MonoBehaviour
       rb.velocity = new Vector3 (0, 0, 0); 
       Stop = GameObject.FindGameObjectWithTag("Shuttlecock").GetComponent<Rigidbody2D>();
       Stop.constraints = RigidbodyConstraints2D.FreezePosition;
-      yield return new WaitForSeconds(3);   
+      yield return new WaitForSeconds(2);   
       Stop.constraints = RigidbodyConstraints2D.None;
     }
 
