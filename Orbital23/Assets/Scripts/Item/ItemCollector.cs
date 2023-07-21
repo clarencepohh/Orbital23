@@ -17,8 +17,7 @@ public class ItemCollector : MonoBehaviour
     public TextMeshProUGUI livesUI;
     public static bool isMagnet;
     public GameObject respawnPoint;
-    public GameObject heartPickupEffect;
-    public GameObject respawnEffect;
+    public Material respawnMaterial;
     [SerializeField] private AudioSource coinSoundEffect;
     [SerializeField] private AudioSource heartSoundEffect;
     [SerializeField] private AudioSource bombSoundEffect;
@@ -128,11 +127,13 @@ public class ItemCollector : MonoBehaviour
     private IEnumerator newPosition()
     {
       transform.position = respawnPoint.transform.position;
+      onPickupEffect("Respawn");
       rb.velocity = new Vector3 (0, 0, 0); 
       Stop = GameObject.FindGameObjectWithTag("Shuttlecock").GetComponent<Rigidbody2D>();
-      Stop.constraints = RigidbodyConstraints2D.FreezePosition;
+      Stop.constraints = RigidbodyConstraints2D.FreezeAll;
       yield return new WaitForSeconds(2);   
       Stop.constraints = RigidbodyConstraints2D.None;
+      onPickupEffect("RespawnDone");
     }
 
     private IEnumerator disableMagnet()
@@ -171,7 +172,6 @@ public class ItemCollector : MonoBehaviour
           break;
         
         case "Heart":
-          //Instantiate(heartPickupEffect, transform.position, transform.rotation);
           heartSoundEffect.Play();
           break;
         
@@ -188,9 +188,13 @@ public class ItemCollector : MonoBehaviour
           break;
         
         case "Respawn":
-          //Instantiate(respawnEffect, transform.position, transform.rotation);
+          respawnMaterial.SetFloat("_isRespawn", 1.1f);
           break;
         
+        case "RespawnDone":
+          respawnMaterial.SetFloat("_isRespawn", 0f);
+          break;
+
         default:
           break;
       }
