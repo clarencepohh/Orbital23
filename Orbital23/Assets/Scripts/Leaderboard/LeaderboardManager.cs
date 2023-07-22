@@ -22,8 +22,8 @@ public class LeaderboardManager : MonoBehaviour
         {
             if (response.success)
             {
-                string tempPlayerNames = "Names\n";
-                string tempPlayerScores = "Scores\n";
+                string tempPlayerNames = "Names\n\n";
+                string tempPlayerScores = "Scores\n\n";
 
                 LootLockerLeaderboardMember[] members = response.items;
 
