@@ -16,7 +16,7 @@ MonoBehaviour:
   token: 
   adminToken: 
   refreshToken: 
-  domainKey: 
+  domainKey: 4uw8ira6
   gameID: 0
   game_version: 1.0.0.0
   deviceID: defaultPlayerId

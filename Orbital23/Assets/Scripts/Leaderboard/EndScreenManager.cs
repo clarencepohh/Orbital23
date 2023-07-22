@@ -16,13 +16,13 @@ public class EndScreenManager : MonoBehaviour
         endScore = ItemCollector.score;
         if (endScore == 0)
         {
-            scoreText.text = "\nTry harder next time!\nYour score is: " + endScore;
+            scoreText.text = "\nTry harder next time!\nYour score is: " + endScore; // for formatting purposes
             button.gameObject.SetActive(false);
             inputField.gameObject.SetActive(false);
         }
         else
         {
-            scoreText.text = "Your score is: " + endScore + "\nClick to submit to leaderboard\n";
+            scoreText.text = "Your score is: " + endScore + "\nClick to submit to leaderboard\n\n";
         }    
     }
     public IEnumerator buttonAudioClick()
