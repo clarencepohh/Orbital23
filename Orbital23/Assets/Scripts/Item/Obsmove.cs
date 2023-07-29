@@ -16,7 +16,7 @@ public class Obsmove : MonoBehaviour
     public float waitDuration;
     int speedMultiplier = 1;
 
-    private void Awake()
+    private void Awake()  // set up for location and number of points 
     {
         wayPoints = new Transform[ways.transform.childCount];
         for (int i = 0; i < ways.gameObject.transform.childCount; i++)
@@ -32,7 +32,7 @@ public class Obsmove : MonoBehaviour
         targetPos = wayPoints[pointIndex].transform.position;
     }
 
-    void Update()
+    void Update()  
     {
        var step = speedMultiplier * speed * Time.deltaTime;
        transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
@@ -43,7 +43,7 @@ public class Obsmove : MonoBehaviour
        } 
     }
 
-    void NextPoint()
+    void NextPoint()  
     {
         if (pointIndex == pointCount - 1)
         {
@@ -60,7 +60,7 @@ public class Obsmove : MonoBehaviour
         StartCoroutine(WaitNextPoint());
     }
 
-    IEnumerator WaitNextPoint()
+    IEnumerator WaitNextPoint()   // add delay when obj reachs a point
     {
         speedMultiplier = 0;
         yield return new WaitForSeconds(waitDuration);
