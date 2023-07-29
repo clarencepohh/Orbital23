@@ -17,7 +17,10 @@ public class ItemCollector : MonoBehaviour
     public TextMeshProUGUI livesUI;
     public static bool isMagnet;
     public GameObject respawnPoint;
+    private float respawnZ;
+    private Vector3 respawnCoordinates;    
     public Material respawnMaterial;
+    
     [SerializeField] private AudioSource coinSoundEffect;
     [SerializeField] private AudioSource heartSoundEffect;
     [SerializeField] private AudioSource bombSoundEffect;
@@ -38,6 +41,8 @@ public class ItemCollector : MonoBehaviour
    {
     score = 0;
     isMagnet = false;
+    respawnMaterial.SetFloat("_isRespawn", 0f); // prevent flashing effect at start
+    respawnZ = transform.position.z; // get original z position of shuttlecock
     initialPosition = transform.position;  // get original position of shuttlecock
     rb = GetComponent<Rigidbody2D>();
 
@@ -126,7 +131,8 @@ public class ItemCollector : MonoBehaviour
 
     private IEnumerator newPosition()
     {
-      transform.position = respawnPoint.transform.position;
+      respawnCoordinates = new Vector3 (respawnPoint.transform.position.x, respawnPoint.transform.position.y, respawnZ);
+      transform.position = respawnCoordinates;   
       onPickupEffect("Respawn");
       rb.velocity = new Vector3 (0, 0, 0); 
       Stop = GameObject.FindGameObjectWithTag("Shuttlecock").GetComponent<Rigidbody2D>();
