@@ -64,6 +64,7 @@ public class ItemCollector : MonoBehaviour
     ground: triggers game over if player lives is 0 else reset shuttlecock to respawn position
     smash: destroys all obstacles
     magnet: moves all coins within radius towards shuttlecock
+    enlarge: increase size of racket
     */
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -129,7 +130,7 @@ public class ItemCollector : MonoBehaviour
       }
     }
 
-    private IEnumerator newPosition()
+    private IEnumerator newPosition()  // respawn  position of shuttlecock
     {
       respawnCoordinates = new Vector3 (respawnPoint.transform.position.x, respawnPoint.transform.position.y, respawnZ);
       transform.position = respawnCoordinates;   
@@ -142,14 +143,14 @@ public class ItemCollector : MonoBehaviour
       onPickupEffect("RespawnDone");
     }
 
-    private IEnumerator disableMagnet()
+    private IEnumerator disableMagnet()  // timer for magnet item
     {
       yield return new WaitForSeconds(10);
       Debug.Log("magnetend");
       isMagnet = false;
     }
 
-    private IEnumerator disableObs()
+    private IEnumerator disableObs()  // timer for smash item
     {
       yield return new WaitForSeconds(10);
       Debug.Log("smashend");
@@ -158,7 +159,7 @@ public class ItemCollector : MonoBehaviour
       UDcount.ResetCounter();
     }
 
-    private IEnumerator disableEnlarge()
+    private IEnumerator disableEnlarge() // timer for enlarge item
     {
       GameObject racket = GameObject.FindGameObjectWithTag("Racket");
       Vector3 increase = new Vector3 (1,1,1);
