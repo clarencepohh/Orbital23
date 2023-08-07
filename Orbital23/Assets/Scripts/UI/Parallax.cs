@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// Script for parallax effect on background
 public class Parallax : MonoBehaviour
 {
     public Camera cam;

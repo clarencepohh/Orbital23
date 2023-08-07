@@ -64,6 +64,7 @@ public class ItemCollector : MonoBehaviour
     ground: triggers game over if player lives is 0 else reset shuttlecock to respawn position
     smash: destroys all obstacles
     magnet: moves all coins within radius towards shuttlecock
+    enlarge: increases size of racket
     */
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -129,7 +130,7 @@ public class ItemCollector : MonoBehaviour
       }
     }
 
-    private IEnumerator newPosition()
+    private IEnumerator newPosition() // respawn position of shuttlecock
     {
       respawnCoordinates = new Vector3 (respawnPoint.transform.position.x, respawnPoint.transform.position.y, respawnZ);
       transform.position = respawnCoordinates;   
@@ -142,14 +143,14 @@ public class ItemCollector : MonoBehaviour
       onPickupEffect("RespawnDone");
     }
 
-    private IEnumerator disableMagnet()
+    private IEnumerator disableMagnet() // timer for magnet item
     {
       yield return new WaitForSeconds(10);
       Debug.Log("magnetend");
       isMagnet = false;
     }
 
-    private IEnumerator disableObs()
+    private IEnumerator disableObs() // timer for smash item
     {
       yield return new WaitForSeconds(10);
       Debug.Log("smashend");
@@ -168,6 +169,11 @@ public class ItemCollector : MonoBehaviour
       Debug.Log("enlargeend");
       enlargeCount.DecreaseCounter();
     }
+
+    /*
+    Switch cases for effects for different item pickups.
+    Gets the item tag and plays the corresponding effect.
+    */
 
     private void onPickupEffect(string tag)
     {
@@ -194,11 +200,11 @@ public class ItemCollector : MonoBehaviour
           break;
         
         case "Respawn":
-          respawnMaterial.SetFloat("_isRespawn", 1.1f);
+          respawnMaterial.SetFloat("_isRespawn", 1.1f); // trigger boolean in shader to flash
           break;
         
         case "RespawnDone":
-          respawnMaterial.SetFloat("_isRespawn", 0f);
+          respawnMaterial.SetFloat("_isRespawn", 0f); // reset boolean in shader to stop flashing
           break;
 
         default:

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
 using TMPro;
@@ -10,6 +9,10 @@ public class LeaderboardManager : MonoBehaviour
     public TextMeshProUGUI playerNames;
     public TextMeshProUGUI playerScores;
 
+    /* 
+    Disables the leaderboard on load as player login is required to fetch the leaderboard. 
+    Leaderboard is enabled when player logs in via LoginRoutineWithLeaderboard() in PlayerManager.cs
+    */
     private void Start() 
     {
         this.enabled = false;
@@ -20,7 +23,7 @@ public class LeaderboardManager : MonoBehaviour
         bool done = false;
         LootLockerSDKManager.GetScoreList(leaderboardKey, 10, 0, (response) =>
         {
-            if (response.success)
+            if (response.success) // if connection is established with API, get the top 10 highscores
             {
                 string tempPlayerNames = "Names\n\n";
                 string tempPlayerScores = "Scores\n\n";
@@ -45,7 +48,7 @@ public class LeaderboardManager : MonoBehaviour
                 playerNames.text = tempPlayerNames;
                 playerScores.text = tempPlayerScores;
             } 
-            else 
+            else  // if connection is not established with API, display error message
             {
                 Debug.Log("Failed" + response.Error);
                 done = true;

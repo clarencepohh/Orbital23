@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* Script for the wall boundaries, set as prefab, added to Environment
-   Walls to limit play area and spawn infinitely based on position of shuttlecock
+/* 
+Script for the wall boundaries, set as prefab, added to Environment
+Walls to limit play area and spawn infinitely based on position of shuttlecock
 */
 
 public class WallManager : MonoBehaviour

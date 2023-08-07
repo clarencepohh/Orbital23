@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using LootLocker.Requests;
 using TMPro;
@@ -9,7 +8,9 @@ public class PlayerNameManager : MonoBehaviour
     public TMP_InputField playerNameInputField;
     string leaderboardKey = "globalHighscore"; // Not a magic string, this is the key for the leaderboard on the LootLocker dashboard
 
-    private void Start() {
+    // Begin login coroutine on starting the game over screen
+    private void Start() 
+    {
         StartCoroutine(LoginRoutine());
     }
 
@@ -18,13 +19,13 @@ public class PlayerNameManager : MonoBehaviour
         bool done = false;
         LootLockerSDKManager.StartGuestSession((response) =>
         {
-            if (response.success)
+            if (response.success) // if player is logged in
             {
                 Debug.Log("Player was logged in");
                 PlayerPrefs.SetString("PlayerId", response.player_id.ToString());
                 done = true;
             } 
-            else 
+            else // if player is not logged in, display error message
             {
                 Debug.Log("Could not start session");
                 done = true;
@@ -37,17 +38,18 @@ public class PlayerNameManager : MonoBehaviour
     {
         LootLockerSDKManager.SetPlayerName(playerNameInputField.text, (response) => 
         {
-            if (response.success)
+            if (response.success) // if player name is set successfully
             {
                 Debug.Log("Successfully set player name");
             } 
-            else 
+            else // if player name is not set successfully, display error message
             {
                 Debug.Log("Could not set player name" + response.Error);
             }
         });
     }
 
+    // Submit score to leaderboard
     public IEnumerator SubmitScoreRoutine(int scoreToUpload)
     {
         bool done = false;
