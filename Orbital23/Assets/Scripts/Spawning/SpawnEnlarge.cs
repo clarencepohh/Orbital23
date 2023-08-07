@@ -1,7 +1,5 @@
 using UnityEngine;
 
-// Script for spawning enlarge item, based on a timer, with counter to limit item spawn
-
 public class SpawnEnlarge : MonoBehaviour
 {
     public GameObject objectToSpawn;

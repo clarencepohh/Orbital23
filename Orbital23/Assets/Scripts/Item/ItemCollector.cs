@@ -159,7 +159,7 @@ public class ItemCollector : MonoBehaviour
       UDcount.ResetCounter();
     }
 
-    private IEnumerator disableEnlarge() // timer for enlarge item
+    private IEnumerator disableEnlarge()
     {
       GameObject racket = GameObject.FindGameObjectWithTag("Racket");
       Vector3 increase = new Vector3 (1,1,1);

@@ -42,6 +42,7 @@ public class Obsmove : MonoBehaviour
        } 
     }
 
+
     void NextPoint() // cycles through points
     {
         if (pointIndex == pointCount - 1)
