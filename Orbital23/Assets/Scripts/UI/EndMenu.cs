@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,17 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class EndMenu : MonoBehaviour
 {
-    public void Quit()
+    public void Quit() // quits the game
     {
         Application.Quit();
     }
 
-    public void Restart()
+    public void Restart() // reload game scene
     {
         SceneManager.LoadScene("MainGame");
     }
 
-    public void Menu()
+    public void Menu() // returns to main menu
     {
         SceneManager.LoadScene("Start Screen");
     }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Script for moving obstacles, obstacle moves between 2 points set in prefab
@@ -16,7 +15,7 @@ public class Obsmove : MonoBehaviour
     public float waitDuration;
     int speedMultiplier = 1;
 
-    private void Awake()
+    private void Awake() // set up for location and number of points
     {
         wayPoints = new Transform[ways.transform.childCount];
         for (int i = 0; i < ways.gameObject.transform.childCount; i++)
@@ -43,7 +42,7 @@ public class Obsmove : MonoBehaviour
        } 
     }
 
-    void NextPoint()
+    void NextPoint() // cycles through points
     {
         if (pointIndex == pointCount - 1)
         {
@@ -60,7 +59,7 @@ public class Obsmove : MonoBehaviour
         StartCoroutine(WaitNextPoint());
     }
 
-    IEnumerator WaitNextPoint()
+    IEnumerator WaitNextPoint() // adds delay when object reaches a point
     {
         speedMultiplier = 0;
         yield return new WaitForSeconds(waitDuration);

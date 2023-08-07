@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +21,7 @@ public class Leaderboard : MonoBehaviour
         StartCoroutine(BackButtonCoroutine());
     }
 
+    // to play button click audio and load Start Screen
     public IEnumerator BackButtonCoroutine()
     {
         yield return buttonAudioClick();

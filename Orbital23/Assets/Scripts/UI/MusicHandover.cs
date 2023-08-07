@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+// Script to keep music playing between scenes
 public class MusicHandover : MonoBehaviour
 {
     private void Awake() {
